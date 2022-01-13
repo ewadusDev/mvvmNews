@@ -11,14 +11,16 @@ import com.ewadus.mvvmnews.data.repo.MainRepository
 import com.ewadus.mvvmnews.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
 
-    private val _article = MutableLiveData<List<Article>>()
-    val article: LiveData<List<Article>> get() = _article
+    private val _articleNetwork = MutableLiveData<List<Article>>()
+    val articleNetwork: LiveData<List<Article>> get() = _articleNetwork
+
+    private val _articleSave = MutableLiveData<List<Article>>()
+    val articleSave: LiveData<List<Article>> get() = _articleSave
 
     private val _currentWeather = MutableLiveData<WeatherModel>()
     val currentWeather: LiveData<WeatherModel> get() = _currentWeather
@@ -32,6 +34,8 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
         fetchArticle()
     }
 
+
+
       fun fetchWeather(lat: String, lon: String) {
           viewModelScope.launch {
               val response = mainRepository.getWeather(lat,lon)
@@ -43,23 +47,40 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
               }
           }
 
-
-
-
     }
+
 
     private fun fetchArticle() {
         viewModelScope.launch {
             val response = mainRepository.getNews()
             when (response) {
-                is Resource.Success -> _article.postValue(response.data.articles)
+                is Resource.Success -> _articleNetwork.postValue(response.data.articles)
                 is Resource.Failure -> {
-                    _article.postValue(null)
+//                    _article.postValue(null)
                     _messageError.postValue(response.msg)
 
                 }
             }
         }
     }
+
+     fun saveNews(article: Article) {
+        viewModelScope.launch {
+            mainRepository.insert(article)
+        }
+    }
+
+     fun deleteNews(article: Article){
+        viewModelScope.launch {
+            mainRepository.delete(article)
+        }
+    }
+
+     fun getSaveNews() = mainRepository.getSaveNews()
+
+
+
+
+
 
 }

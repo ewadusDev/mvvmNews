@@ -6,8 +6,11 @@
         <entry key="app/src/main/res/drawable/bg_itemview.xml" value="0.2984375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_feed.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/layout/fragment_read.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.16940789473684212" />
         <entry key="app/src/main/res/layout/fragment_weather.xml" value="0.4864699345903505" />
         <entry key="app/src/main/res/layout/item_view_feed.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_view_save.xml" value="0.17828947368421053" />
         <entry key="app/src/main/res/menu/botton_nav_menu.xml" value="0.17828947368421053" />
       </map>
     </option>
