@@ -1,8 +1,10 @@
 package com.ewadus.mvvmnews.di
 
 import com.ewadus.mvvmnews.data.api.NewsAPIService
+import com.ewadus.mvvmnews.data.api.WeatherAPIService
 import com.ewadus.mvvmnews.data.repo.MainRepository
 import com.ewadus.mvvmnews.util.Constants.Companion.BASE_URL_NEWS
+import com.ewadus.mvvmnews.util.Constants.Companion.BASE_URL_WEATHER
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +25,15 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideMainRepository(newsAPIService: NewsAPIService) = MainRepository(newsAPIService)
+    fun provideWeatherApiService(): WeatherAPIService =
+        Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL_WEATHER).build().create(WeatherAPIService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideMainRepository(
+        newsAPIService: NewsAPIService,
+        weatherAPIService: WeatherAPIService
+    ) = MainRepository(newsAPIService,weatherAPIService)
 
 }

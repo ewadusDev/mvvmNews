@@ -11,12 +11,12 @@ import com.ewadus.mvvmnews.databinding.ItemViewFeedBinding
 class FeedAdapter() : ListAdapter<Article, FeedAdapter.ViewHolder>(MainDiffCallback()) {
 
     class ViewHolder(private val binding : ItemViewFeedBinding ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(article: Article) {
             binding.article = article
             binding.executePendingBindings()
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,7 +27,6 @@ class FeedAdapter() : ListAdapter<Article, FeedAdapter.ViewHolder>(MainDiffCallb
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-
 }
 
 class MainDiffCallback: DiffUtil.ItemCallback<Article>( ) {
@@ -38,5 +37,4 @@ class MainDiffCallback: DiffUtil.ItemCallback<Article>( ) {
     override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
         return oldItem == newItem
     }
-
 }

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <layout>
-
     <data>
-
         <variable
             name="article"
             type="com.ewadus.mvvmnews.data.model.news.Article" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

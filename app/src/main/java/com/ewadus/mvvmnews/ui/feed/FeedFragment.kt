@@ -1,16 +1,13 @@
 package com.ewadus.mvvmnews.ui.feed
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ewadus.mvvmnews.R
 import com.ewadus.mvvmnews.databinding.FragmentFeedBinding
 import com.ewadus.mvvmnews.ui.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,28 +32,20 @@ class FeedFragment : Fragment() {
         observeData()
         setupRecyclerView()
 
-
-
         return binding.root
-
-
     }
 
     private fun observeData() {
         viewModel.article.observe(this, Observer {
             feedAdapter.submitList(it)
             binding.recyclerview.adapter = feedAdapter
-
-            Log.i("result",it.toString())
         })
-
 
     }
 
     private fun setupRecyclerView() {
         binding.recyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
-//            this.adapter = feedAdapter
         }
     }
 
@@ -64,6 +53,4 @@ class FeedFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
-
 }
