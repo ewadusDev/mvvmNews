@@ -70,10 +70,15 @@ class FeedFragment : Fragment(), OnclickListener {
     override fun onClickShare(position: Int) {
         val sendIntent = Intent().apply {
             this.action = Intent.ACTION_SEND
-            this.putExtra(Intent.EXTRA_TEXT,feedAdapter.currentList[position].url)
+            this.putExtra(Intent.EXTRA_TEXT, feedAdapter.currentList[position].url)
             this.type = "text/plain"
         }
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
+    }
+
+    override fun onClickSaveBtn(position: Int) {
+        viewModel.saveNews(feedAdapter.currentList[position])
+        Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
     }
 }

@@ -6,11 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.feed.FeedFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Feeds Today"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar_top"
         tools:listitem="@layout/item_view_feed" />
 
 

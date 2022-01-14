@@ -32,7 +32,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
-                android:src="@color/black"
+                android:src="@drawable/ic_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tvTitle"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
                 android:id="@+id/tvSource"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Headline"
+                android:text="@{article.publishedAt}"
                 app:layout_constraintBottom_toTopOf="@id/tvPublishedAt"
                 app:layout_constraintStart_toStartOf="@+id/tvTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -77,7 +77,8 @@
                android:src="@drawable/ic_share"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/button_share_content" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -96,14 +97,15 @@
                 app:imageFromUrl = "@{article.urlToImage}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/backgrounds/scenic" />
+                tools:src="@tools:sample/backgrounds/scenic"
+                android:contentDescription="@string/image_cover" />
 
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Loading"
+                android:text="@{article.source.name}"
                 android:maxLines="2"
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,9 +115,8 @@
                 android:id="@+id/btn_read"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="READ"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/primaryDarkColor"
+                android:text="@string/read_text_in_btn"
+                android:textColor="@color/secondaryTextColor"
                 app:layout_constraintTop_toBottomOf="@id/tvDescription"
                 app:layout_constraintStart_toStartOf="parent" />
 

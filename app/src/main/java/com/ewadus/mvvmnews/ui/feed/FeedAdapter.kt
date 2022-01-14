@@ -18,12 +18,15 @@ class FeedAdapter(private val onclickListener: OnclickListener) :
             binding.article = article
             binding.executePendingBindings()
 
-
             binding.btnRead.setOnClickListener {
                 onClickListener.onClickItemView(adapterPosition)
             }
             binding.imgShare.setOnClickListener {
                 onClickListener.onClickShare(adapterPosition)
+            }
+
+            binding.btnSave.setOnClickListener{
+                onClickListener.onClickSaveBtn(adapterPosition)
             }
         }
     }
@@ -43,6 +46,7 @@ class FeedAdapter(private val onclickListener: OnclickListener) :
 interface OnclickListener {
     fun onClickItemView(position: Int)
     fun onClickShare(position: Int)
+    fun onClickSaveBtn(position: Int)
 }
 
 class MainDiffCallback : DiffUtil.ItemCallback<Article>() {

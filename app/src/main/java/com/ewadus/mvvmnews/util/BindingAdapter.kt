@@ -1,5 +1,6 @@
 package com.ewadus.mvvmnews.util
 
+import android.annotation.SuppressLint
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
